@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_161548) do
+ActiveRecord::Schema.define(version: 2021_08_13_181158) do
 
-  create_table "menus", force: :cascade do |t|
+  create_table "foods", force: :cascade do |t|
     t.string "food_name"
     t.string "image"
     t.string "description"
-    t.string "price"
+    t.integer "price"
     t.integer "restaurant_id"
   end
 

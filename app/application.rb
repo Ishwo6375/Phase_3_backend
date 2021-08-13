@@ -33,8 +33,9 @@ class Application
        # get a resource by id
     elsif req.path.match(/restaurants/) && req.get?
       id = req.path.split('/')[2]
+    
       restaurant = Restaurant.find_by_id(id)
-
+    
       if restaurant 
         return [
           200,
