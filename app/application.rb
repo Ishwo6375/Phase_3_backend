@@ -79,36 +79,36 @@ class Application
 
          ###########################
 
-         #MENU ROUTES
+         #FOOD ROUTES
 
          # get all Menu resources 
-    elsif req.path == '/menus' && req.get?
+    elsif req.path == '/foods' && req.get?
       return [
         200,
         { 'Content-Type' => 'application/json' },
-        [ Menu.all.to_json ]
+        [ Food.all.to_json ]
       ]
 
        # create a new resource
-    elsif req.path == '/menus' && req.post?
+    elsif req.path == '/foods' && req.post?
       body = JSON.parse(req.body.read)
-      menu = Menu.create(body)
+      food = Food.create(body)
       return [
         200,
         { 'Content-Type' => 'application/json' },
-        [ menu.to_json ]
+        [ food.to_json ]
       ]
 
        # get a resource by id
-    elsif req.path.match(/menus/) && req.get?
+    elsif req.path.match(/foods/) && req.get?
       id = req.path.split('/')[2]
-      menu = Menu.find_by_id(id)
+      food = Food.find_by_id(id)
 
-      if menu 
+      if food 
         return [
           200,
           { 'Content-Type' => 'application/json' },
-          [ menu.to_json ]
+          [ food.to_json ]
         ]
       else
         return [
@@ -119,25 +119,25 @@ class Application
       end
    
      # update a resource by id
-    elsif req.path.match(/menus/) && req.patch?
+    elsif req.path.match(/foods/) && req.patch?
       id = req.path.split('/')[2]
-      menu = Menu.find_by_id(id)
+      food = Food.find_by_id(id)
       body = JSON.parse(req.body.read)
       
-      menu.update(body)
+      food.update(body)
 
       return [
         200,
         { 'Content-Type' => 'application/json' },
-        [ menu.to_json ]
+        [ food.to_json ]
       ]
 
       # delete a resource by id
-    elsif req.path.match(/menus/) && req.delete?
+    elsif req.path.match(/foods/) && req.delete?
       id = req.path.split('/')[2]
-      menu = Menu.find_by_id(id)
+      food = Food.find_by_id(id)
 
-      menu.destroy
+      food.destroy
 
       return [
         204,
