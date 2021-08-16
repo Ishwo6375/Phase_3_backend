@@ -148,7 +148,8 @@ class Application
       end
 
     if req.path.match(/test/) 
-      return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
+      return [200, 
+      { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
 
     else
        return [
